@@ -6,27 +6,46 @@ function App() {
   // --------------------------------------VARIABLES ESTADO-----------------------------------------------
 
 // Con esta variable nos traemos adalabers del fichero
-
  const [data, setData] = useState(contacts);
-  console.log(data);
+
+
+// Variable para guardar en un objeto los datos de la nueva adalaber
+const [newContact, setNewContact] = useState({
+  name: '',
+  counselor: '',
+  speciality: '',
+});
+
+
  // USEEFFECT
- // FUNCIONES HANDLER
- // FUNCIONES Y VARIABLES QUE AYUDEN A RENDERIZAR
+
+ // ---------------------------------------FUNCIONES HANDLER------------------------------------------------
+
+ // Recogemos los valores de los inputs 
+ const handleNewAdalaber = (ev) => {
+  ev.preventDefault();
+  const inputValue = ev.target.value;
+  // Importante que coincida el id
+  setNewContact({...newContact, [ev.target.id] : inputValue })
+  
+ }
 
 
-//Para pintar a traves de un map las adalabers
 
+
+
+ // -------------------------FUNCIONES Y VARIABLES QUE AYUDEN A RENDERIZAR----------------------
+
+
+//Para pintar a traves de un map las adalabers, como está guardado en results : data.results
 const htmlAdalaber = data.results.map ((eachAdalaber) => {
 return (
-        <tr>
+        <tr key= {eachAdalaber.id}>
           <td>{eachAdalaber.name}</td>
           <td>{eachAdalaber.counselor}</td>
           <td>{eachAdalaber.speciality}</td>
         </tr>
-         
-      
 );
-
 });
 
 
@@ -47,25 +66,6 @@ return (
       <tbody className="table">
       {htmlAdalaber}
       </tbody>
-      {/* <tbody className="table">
-        <tr>
-          <td>MariCarmen</td>
-          <td>Yanelis</td>
-          <td>Python</td>
-        </tr>
-        
-        <tr>
-          <td>Amparo</td>
-          <td>Dayana</td>
-          <td>IA</td>
-        </tr>
-        
-        <tr>
-          <td>Escandia</td>
-          <td>Iván</td>
-          <td>3D graphics</td>
-        </tr>
-      </tbody> */}
       </table>
       <form className="form">
           <h2 >Añade una nueva Adalaber</h2>
@@ -74,24 +74,24 @@ return (
             type="text"
             name="name"
             id="name"
-            // onInput={handleNewContact}
-            // value={newContact.name}
+            onInput={handleNewAdalaber}
+            value={newContact.name}
           />
           <label htmlFor="counselor">Tutora</label>
           <input
             type="text"
             name="counselor"
             id="counselor"
-            // onInput={handleNewContact}
-            // value={newContact.lastname}
+            onInput={handleNewAdalaber}
+            value={newContact.counselor}
             />
-          <label htmlFor="specialty">Especialidad</label>
+          <label htmlFor="speciality">Especialidad</label>
           <input
             type="text"
-            name="specialty"
-            id="specialty"
-            // onInput={handleNewContact}
-            // value={newContact.phone}
+            name="speciality"
+            id="speciality"
+            onInput={handleNewAdalaber}
+            value={newContact.speciality}
           />
           <button>Añadir una nueva Adalaber</button>
         </form>
