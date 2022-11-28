@@ -5,9 +5,8 @@ import { useState } from 'react';
 function App() {
   // --------------------------------------VARIABLES ESTADO-----------------------------------------------
 
-// Con esta variable nos traemos adalabers del fichero
- const [data, setData] = useState(contacts);
-
+// Con esta variable nos traemos adalabers del fichero. De momento solo me interesa lo guardado en results
+ const [data, setData] = useState(contacts.results);
 
 // Variable para guardar en un objeto los datos de la nueva adalaber
 const [newContact, setNewContact] = useState({
@@ -17,7 +16,7 @@ const [newContact, setNewContact] = useState({
 });
 
 
- // USEEFFECT
+ //------------------------------------- USEEFFECT------------------------------
 
  // ---------------------------------------FUNCIONES HANDLER------------------------------------------------
 
@@ -26,19 +25,26 @@ const [newContact, setNewContact] = useState({
   ev.preventDefault();
   const inputValue = ev.target.value;
   // Importante que coincida el id
-  setNewContact({...newContact, [ev.target.id] : inputValue })
-  
+  setNewContact({...newContact, [ev.target.id] : inputValue });
  }
 
+// Hacemos otra función, para recoger lo que esta guardado en nuestra variable estado para que se añada a la tabla nuestra nueva adalaber
 
+const addNewContact = (ev) => {
+  ev.preventDefault();
+ // llamamos a nuestra variable estado para introducirle una nueva adalaber
+ setData([...data, newContact]);
+ console.log(data)
+
+}
 
 
 
  // -------------------------FUNCIONES Y VARIABLES QUE AYUDEN A RENDERIZAR----------------------
 
 
-//Para pintar a traves de un map las adalabers, como está guardado en results : data.results
-const htmlAdalaber = data.results.map ((eachAdalaber) => {
+//Para pintar a traves de un map las adalabers
+const htmlAdalaber = data.map ((eachAdalaber) => {
 return (
         <tr key= {eachAdalaber.id}>
           <td>{eachAdalaber.name}</td>
@@ -67,7 +73,7 @@ return (
       {htmlAdalaber}
       </tbody>
       </table>
-      <form className="form">
+      <form className="form" >
           <h2 >Añade una nueva Adalaber</h2>
           <label htmlFor="name">Nombre</label>
           <input
@@ -93,7 +99,10 @@ return (
             onInput={handleNewAdalaber}
             value={newContact.speciality}
           />
-          <button>Añadir una nueva Adalaber</button>
+          <button 
+            onClick={addNewContact}
+
+          >Añadir una nueva Adalaber</button>
         </form>
     </div>
   );
