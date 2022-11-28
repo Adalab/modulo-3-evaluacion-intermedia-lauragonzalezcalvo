@@ -40,7 +40,7 @@ const addNewContact = (ev) => {
 
 
 
- // -------------------------FUNCIONES Y VARIABLES QUE AYUDEN A RENDERIZAR----------------------
+ // -------------------------FUNCIONES Y VARIABLES QUE AYUDEN A RENDERIZAR-----------------------
 
 
 //Para pintar a traves de un map las adalabers
