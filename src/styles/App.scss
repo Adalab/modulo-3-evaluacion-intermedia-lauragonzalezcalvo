@@ -1,6 +1,5 @@
-@import 'core/reset';
+@import "core/reset";
+@import "core/variables";
 
-.table{
-  border: 2px solid black;
-  width: 100vh;
-}
+@import "./components/main";
+@import "./components/header";

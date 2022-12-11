@@ -1,0 +1,69 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: $font-roboto;
+  &-form {
+    height: 50px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    &__Search {
+      &-inputs {
+        width: 212px;
+      }
+      &-label {
+        padding-right: 67px;
+      }
+      &-select {
+        width: 220px;
+      }
+      &-btn {
+        margin: 20px;
+        background-color: $grey;
+        color: $font-color;
+        font-size: 15px;
+        border: none;
+        border-radius: 10%;
+        width: 90px;
+        height: 40px;
+        cursor: pointer;
+      }
+    }
+  }
+  &-formAdalaber {
+    background-color: $blueForm;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &-title {
+      color: $grey;
+    }
+    &__div {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
+.table {
+  width: 70%;
+  text-align: center;
+  text-decoration: none;
+  margin: 20px;
+  border: 2px solid $dark-blue;
+  border-radius: 5px;
+  &-list {
+    background-color: $blue;
+  }
+  &-head {
+    background-color: $blueForm;
+  }
+}
+.url {
+  text-decoration: none;
+  color: $font-color;
+}
