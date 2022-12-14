@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import fetchdataApi from "../services/api";
 
 function App() {
-  // --------------------------------------VARIABLES ESTADO-----------------------------------------------
+  // --------------------------------------VARIABLES ESTADO--------------------------------------------------------
 
   // Con esta variable nos traemos adalabers del fichero. De momento solo me interesa lo guardado en results
   const [data, setData] = useState([]);
